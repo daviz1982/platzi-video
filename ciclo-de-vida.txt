@@ -1,0 +1,40 @@
+Componente:
+MONTADO
+- constructor
+  - setState
+  - event bind
+
+- componentWillMount
+  - setState
+  - prohibido bind
+
+- render
+  - return jsx
+  - permite calcular propiedades (variables)
+
+- componentDidMount
+  - bindear eventos
+
+ACTUALIZACIÓN
+- componentWillReceiveProps
+  - llamado al recibir propiedades
+  - actualizar estado
+
+- shouldComponentUpdate
+  - validar si componente se rerenderiza
+  - optimiza rendimiento
+
+- componentWillUpdate
+  - antes de rerender
+
+- render
+
+- componentDidUpdate
+
+DESMONTADO
+- componentWillUnmount
+  
+MANEJO DE ERRORES
+- componentDidCath
+  - es invocado si ocurre error al renderizar
+  - solo ocurre en componentes hijos (usar envolturas)
