@@ -3,10 +3,6 @@ import { render } from 'react-dom';
 import data from '../api.json';
 import Home from '../pages/containers/home';
 
-const app = document.getElementById('app');
-//render(<Categories categories={data.categories} />, app);
+const homeContainer = document.getElementById('home-container')
 
-render(
-  <Home data={data} />,
-  app
-);
+render(<Home data={data} />, homeContainer);

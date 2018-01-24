@@ -18,9 +18,10 @@ class Media extends PureComponent {
 	// this.handleClick es ES6 mode, abajo ES7
 
 	handleClick = (event) => {
-		this.setState({
-			author: 'David Cruz'
-		})
+		// this.setState({
+		// 	author: 'David Cruz'
+		// })
+		this.props.openModal(this.props);
 	}
 
 	render() {
