@@ -1,0 +1,16 @@
+TODO curso React:
+34
+- Timer en el control. Las funciones para formatear el tiempo no deben estar en el timer.js
+- Dentro del SPAN debe llegar solamente el texto formateado
+- Mover al container/video-player 
+
+35
+- Barra de progreso, con eventos
+- Spinner de loading (eventos onSeeking, onSeeked)
+
+36
+- Volumen con eventos
+- TODO: click en el icono altavoz lo mutea (debería cambiar icono, probar de hacerlo con CSS). otro click y lo devuelve donde estaba (o a 1 si es difícil)
+
+37
+- Fullscreen: TODO añadir eventos para todos los browsers
