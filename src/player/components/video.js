@@ -29,8 +29,7 @@ class Video extends Component {
       <div className="Video">
         <video
           autoPlay={this.props.autoplay}
-          //src={this.props.src}
-          src="http://download.blender.org/peach/bigbuckbunny_movies/BigBuckBunny_320x180.mp4"
+          src={this.props.src}
           ref={this.setRef}
           onLoadedMetadata={handleLoadedMetadata}
           onTimeUpdate={handleTimeUpdate}

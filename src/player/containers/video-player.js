@@ -4,9 +4,9 @@ import Video from '../components/video';
 import Title from '../components/title';
 import PlayPause from '../components/play-pause';
 import Timer from '../components/timer.js';
-// import Controls from '../components/video-player-controls.js';
-// import ProgressBar from '../components/progress-bar';
-// import Spinner from '../components/spinner';
+import Controls from '../components/video-player-controls.js';
+import ProgressBar from '../components/progress-bar';
+import Spinner from '../components/spinner';
 // import Volume from '../components/volume';
 // import FullScreen from '../components/full-screen';
 
@@ -16,6 +16,7 @@ class VideoPlayer extends Component {
   state = {
     pause: true,
     duration: 0,
+    currentTime: 0,
   };
 
   // Function to control play/pause
@@ -40,24 +41,52 @@ class VideoPlayer extends Component {
     });
   };
 
+  handleTimeUpdate = () => {
+    this.setState({
+      currentTime: this.video.currentTime,
+    });
+  };
+
+  leftPad = (n) => {
+    return `0${n}`.substr(-2);
+  }
+
+  formatTime = (secs) => {
+    return `${this.leftPad(~~(secs/60))}:${this.leftPad(~~(secs%60))}`;
+  };
+
+  handleProgressChange = event => {
+    this.video.currentTime = event.target.value;
+  };
+
   render = () => {
     return (
       <VideoPlayerLayout>
         <Title
-          title="Esto es un pinche video"
+          title={this.props.title}
         />
-        <PlayPause
-          pause={this.props.autoplay}
-          handleClick={this.togglePlay}
-        />
-        <Timer 
-          duration={this.state.duration}
-        />
+        <Spinner />
+        <Controls>
+          <PlayPause
+            pause={this.state.pause}
+            handleClick={this.togglePlay}
+          />
+          <Timer 
+            duration={this.formatTime(this.state.duration)}
+            currentTime={this.formatTime(this.state.currentTime)}
+          />
+          <ProgressBar 
+            duration={this.state.duration}
+            currentTime={this.handleChan}
+            handleProgressChange={this.handleProgressChange}
+          />
+        </Controls>
         <Video
           autoplay={this.props.autoplay}
           pause={this.state.pause}
-          onLoadedMetadata={this.handleLoadedMetadata}
-          src=""
+          handleLoadedMetadata={this.handleLoadedMetadata}
+          handleTimeUpdate={this.handleTimeUpdate}
+          src={this.props.src}
         />
       </VideoPlayerLayout>
     );
